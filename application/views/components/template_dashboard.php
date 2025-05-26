@@ -190,7 +190,7 @@
                         </li>
                         <li>
                             <a href="https://account.lumintulogic.com/home.php" class="flex items-center gap-x-4 h-[50px] rounded-xl px-4 hover:bg-cream text-dark-green hover:text-white">
-                                <img class="w-5" src="../../Img/icons/home_icon.svg" alt="Dashboard Icon">
+                                <img class="w-5" src="<?= base_url('assets/') ?>Img/icons/home_icon.svg" alt="Dashboard Icon">
                                 <p class="font-semibold">Beranda</p>
                             </a>
                         </li>
@@ -210,7 +210,7 @@
                         </li> -->
                         <li>
                             <a href="score.php" class="flex items-center gap-x-4 h-[50px] rounded-xl px-4 hover:bg-cream text-dark-green hover:text-white">
-                                <img class="w-5" src="../../Img/icons/score_icon.svg" alt="Score Icon">
+                                <img class="w-5" src="<?= base_url('assets/') ?>Img/icons/score_icon.svg" alt="Score Icon">
                                 <p class="font-semibold">Nilai</p>
                             </a>
                         </li>
@@ -240,7 +240,7 @@
                         <!-- ICON DAN TEXT LOG OUT -->
                         <li>
                             <a href="<?= site_url('Auth/logout') ?>" class="flex items-center gap-x-4 h-[50px] rounded-xl px-4 hover:bg-cream text-dark-green hover:text-white" onclick=" return confirm('Anda yakin ingin keluar?')">
-                                <img class="w-5" src="../../Img/icons/logout_icon.svg" alt="Log out Icon">
+                                <img class="w-5" src="<?= base_url('assets/') ?>Img/icons/logout_icon.svg" alt="Log out Icon">
                                 <p class="font-semibold">Keluar</p>
                             </a>
                         </li>

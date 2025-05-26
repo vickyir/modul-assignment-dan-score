@@ -151,7 +151,7 @@ class Dashboard extends CI_Controller
             "student_id" => $studentId
         ];
 
-        $checkAssignmentData = $this->db->get_where('assignment_submissions', ['assignment_id' => $assignmentId])->row_object();
+        $checkAssignmentData = $this->db->get_where('assignment_submissions', ['assignment_id' => $assignmentId, 'student_id' => $studentId])->row_object();
 
         if(empty($checkAssignmentData)) {
             $this->db->insert('assignment_submissions', $dataUpload);

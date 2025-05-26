@@ -207,7 +207,7 @@
 
                                              <?php $no = 1;
                                                 foreach ($assignment_submission as $submission) : ?>
-                                                 <?php if ($submission->assignment_id == $item->assignment_id) : ?>
+                                                 <?php if ($submission->assignment_id == $item->assignment_id && $submission->student_id == $this->session->userdata('user_id')) : ?>
                                                      <ul class="grid grid-cols-12 border-b border-gray-400 py-2">
                                                          <li><?= $no ?></li>
                                                          <li class="col-span-5"><?= $submission->submitted_date ?></li>

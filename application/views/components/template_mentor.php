@@ -115,16 +115,16 @@
                         <!-- <li>
                             <a href="#" class="flex items-center gap-x-4 h-[50px] rounded-xl px-4 hover:bg-cream text-dark-green hover:text-white">
                                 <img class="w-5" src="<?= base_url('assets/') ?>Img/icons/course_dark_icon.svg" alt="Course Icon">
-                                <p class="font-semibold">Materi</p>
+                                <p class="font-semibold">Rekapitulasi</p>
                             </a>
                         </li> -->
                         <!-- Icon Assignment -->
-                        <!-- <li>
+                        <li>
                             <a href="./index.php" class="flex items-center gap-x-4 h-[50px] rounded-xl px-4 hover:bg-cream text-dark-green hover:text-white">
                                 <img class="w-5" src="<?= base_url('assets/') ?>img/icons/assignment_icon.svg" alt="Assignment Icon">
-                                <p class="font-semibold">Penugasan</p>
+                                <p class="font-semibold">Rekapitulasi</p>
                             </a>
-                        </li> -->
+                        </li>
                         <!-- <li>
                             <a href="<?= site_url('dashboard/score')?>" class="flex items-center gap-x-4 h-[50px] rounded-xl px-4 hover:bg-cream text-dark-green hover:text-white">
                                 <img class="w-5" src="<?= base_url('assets/') ?>img/icons/score_icon.svg" alt="Score Icon">

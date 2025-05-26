@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="container-lg">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg" id="printableArea">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 
                     <thead class="text-xs text-gray-700 uppercase bg-cream">
@@ -58,10 +58,12 @@
 
                     </thead>
                     <tbody>
-                        <?php $x=1;foreach ($score as $item) : ?>
+                        <?php $x = 1;
+                        foreach ($score as $item) : ?>
                             <tr class="bg-white border-b">
                                 <td class="px-6 py-4 font-medium text-gray-900 weight">
-                                    <?=$x;$x++;?>
+                                    <?= $x;
+                                    $x++; ?>
                                 </td>
                                 <td class="px-6 py-4 font-medium text-gray-900 weight">
                                     <table>
@@ -126,19 +128,39 @@
                     </tbody>
                 </table>
             </div>
+            <button onclick="printDiv()" class="mt-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded">Cetak</button>
         </div>
     </div>
 </div>
+</div>
 
-
-<script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 <script>
+    function printDiv() {
+        console.info("masuk sini");
+        // Use querySelector instead of getElementById to handle CSS selectors like '#printableArea'
+        var printContents = document.querySelector('#printableArea');
+
+        if (!printContents) { // Added a check to ensure the element is found
+            console.error("Error: Element with selector '" + divId + "' not found.");
+            return; // Stop the function if the element isn't found
+        }
+
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents.innerHTML; // Access innerHTML here
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+
     let btnToggle = document.getElementById('btnToggle');
     let btnToggle2 = document.getElementById('btnToggle2');
     let sidebar = document.querySelector('.sidebar');
     let leftNav = document.getElementById('left-nav');
     // let listMenu = document.getElementById('dropdownMenu');
     // let listContainer = document.getElementById('dropdownRightStart');
+
 
     btnToggle.onclick = function() {
         sidebar.classList.toggle('in-active');
