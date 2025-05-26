@@ -134,7 +134,28 @@
 </div>
 </div>
 
+<script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+<!-- FUNGSI TOMBOL BUTTON TOGGLE SIDEBAR -->
+
 <script>
+    
+
+    let btnToggle = document.getElementById('btnToggle');
+    let btnToggle2 = document.getElementById('btnToggle2');
+    let sidebar = document.querySelector('.sidebar');
+    let leftNav = document.getElementById('left-nav');
+    // let listMenu = document.getElementById('dropdownMenu');
+    // let listContainer = document.getElementById('dropdownRightStart');
+
+
+    btnToggle.onclick = function() {
+        sidebar.classList.toggle('in-active');
+    }
+
+    btnToggle2.onclick = function() {
+        leftNav.classList.toggle('hidden');
+    }
+
     function printDiv() {
         console.info("masuk sini");
         // Use querySelector instead of getElementById to handle CSS selectors like '#printableArea'
@@ -153,57 +174,4 @@
 
         document.body.innerHTML = originalContents;
     }
-
-    let btnToggle = document.getElementById('btnToggle');
-    let btnToggle2 = document.getElementById('btnToggle2');
-    let sidebar = document.querySelector('.sidebar');
-    let leftNav = document.getElementById('left-nav');
-    // let listMenu = document.getElementById('dropdownMenu');
-    // let listContainer = document.getElementById('dropdownRightStart');
-
-
-    btnToggle.onclick = function() {
-        sidebar.classList.toggle('in-active');
-    }
-
-    btnToggle2.onclick = function() {
-        leftNav.classList.toggle('hidden');
-    }
-
-    $(document).ready(function() {
-        $('#btnHelp').click(function() {
-            introJs().setOptions({
-                steps: [{
-                        intro: "Halo Selamat Datang Di Halaman Score Students"
-                    }, {
-                        element: document.querySelector('.score-box'),
-                        intro: "Ini merupakan halaman score dimana students akan melihat nilai mereka"
-                    }, {
-                        element: document.querySelector('.batch'),
-                        intro: "Di kolom pertama ini merupakan batch yang di ikutin oleh students"
-                    },
-                    {
-                        element: document.querySelector('.course'),
-                        intro: "Di kolom kedua ini merupakan course yang bakal di ikuti oleh students"
-                    }, {
-                        element: document.querySelector('.weight'),
-                        intro: "Di kolom ketiga ini merupakan bobot nilai dari tiap - tiap course"
-                    }, {
-                        element: document.querySelector('.score'),
-                        intro: "Di kolom keempat ini merupakan nilai/score dari tiap - tiap course"
-                    },
-                    {
-                        element: document.querySelector('.total'),
-                        intro: "Di kolom kelima ini merupakan total kalkulasi nilai/score dari tiap - tiap course"
-                    },
-                    {
-                        element: document.querySelector('.grade'),
-                        intro: "Di kolom keenam ini merupakan nilai/score huruf dari tiap - tiap course"
-                    }
-
-                ]
-            }).start();
-        })
-
-    })
 </script>
