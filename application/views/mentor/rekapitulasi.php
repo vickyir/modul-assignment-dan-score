@@ -47,7 +47,7 @@
                                 Batch
                             </th>
                             <th scope="col-auto" class="px-6 py-3">
-                                Course
+                                Nama
                             </th>
                             <th scope="col-auto" class="px-6 py-3">
                                 Nilai
@@ -59,7 +59,7 @@
                     </thead>
                     <tbody>
                         <?php $x = 1;
-                        foreach ($score as $item) : ?>
+                        foreach ($rekaps as $item) : ?>
                             <tr class="bg-white border-b">
                                 <td class="px-6 py-4 font-medium text-gray-900 weight">
                                     <?= $x;
@@ -81,7 +81,7 @@
                                     <table>
                                         <tr>
                                             <td>
-                                                <p class="py-2"><?= $item->assignment_name ?></p>
+                                                <p class="py-2"><?= $item->user_name ?></p>
                                             </td>
                                         </tr>
 

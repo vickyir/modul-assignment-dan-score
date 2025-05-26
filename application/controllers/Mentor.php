@@ -343,4 +343,74 @@ class Mentor extends CI_Controller
             redirect('mentor/assignment/' . $id_subject);
         }
     }
+
+    public function rekapitulasi() {
+        $data['title'] = "Rekapitulasi";
+        $token = $this->session->userdata('token');
+        $mentorData = $this->getDataWithAuth("http://localhost:3000/api/users/getUserByID", "296", $token);
+        $data['mentor'] = $mentorData->data;
+        $data['batch'] = $this->BatchModel->getStudentBatch("1");
+        // 1. Fetch all users from the external API
+        // This is needed to get user names and other details for display.
+        $userData = $this->userapi->get_all_users();
+
+        // Check if user data was successfully retrieved
+        if (!$userData || !isset($userData->data) || !is_array($userData->data)) {
+            log_message('error', 'Failed to retrieve user data from API.');
+            return ['rekaps' => []]; // Return empty if no user data
+        }
+
+        // Create a map for quick lookup of user details by user ID
+        $user_map = [];
+        foreach ($userData->data as $user) {
+            // Assuming your API user data has an 'id' field for the user ID
+            $user_map[$user->id] = $user;
+        }
+
+      
+        $scores_data_for_assignment = $this->db->get('scores')->result();
+
+        // If no scores are found for this assignment, there's nothing to process.
+        if (empty($scores_data_for_assignment)) {
+            return ['rekaps' => []];
+        }
+
+    
+        // 4. Combine/Merge the data, iterating through the scores
+        $rekaps = [];
+        foreach ($scores_data_for_assignment as $score_entry) {
+            $student_id = $score_entry->student_id;
+
+            // Create a new object to hold the combined information for this user's score
+            $score_rekap_entry = new stdClass();
+            $score_rekap_entry->score_id = $score_entry->score_id;
+            $score_rekap_entry->score_value = $score_entry->score_value;
+            $score_rekap_entry->assignment_id = $score_entry->assignment_id; // Include assignment_id from score
+            $score_rekap_entry->student_id = $student_id;
+
+            // Get user details from the map
+            if (isset($user_map[$student_id])) {
+                $user_data = $user_map[$student_id];
+                $score_rekap_entry->user_details = $user_data; // All user details
+                $score_rekap_entry->user_name = $user_data->user_first_name . ' ' . $user_data->user_last_name;
+            } else {
+                // Handle cases where a student_id from scores is not found in API response
+                $score_rekap_entry->user_details = null;
+                $score_rekap_entry->user_name = 'User Not Found (ID: ' . $student_id . ')';
+                log_message('warning', 'Student ID ' . $student_id . ' from scores not found in API response.');
+            }
+
+
+            $rekaps[] = $score_rekap_entry;
+        }
+
+        // 4. Prepare for View
+        $data['rekaps'] = $rekaps;
+
+        // var_dump( $data['rekaps']);
+        // die;
+
+
+        $this->template->load('components/template_mentor', 'mentor/rekapitulasi', $data);
+    }
 }

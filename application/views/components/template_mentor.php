@@ -120,7 +120,7 @@
                         </li> -->
                         <!-- Icon Assignment -->
                         <li>
-                            <a href="./index.php" class="flex items-center gap-x-4 h-[50px] rounded-xl px-4 hover:bg-cream text-dark-green hover:text-white">
+                            <a href="<?=site_url('mentor/rekapitulasi')?>" class="flex items-center gap-x-4 h-[50px] rounded-xl px-4 hover:bg-cream text-dark-green hover:text-white">
                                 <img class="w-5" src="<?= base_url('assets/') ?>img/icons/assignment_icon.svg" alt="Assignment Icon">
                                 <p class="font-semibold">Rekapitulasi</p>
                             </a>
